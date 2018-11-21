@@ -8,57 +8,63 @@ void main() {
 }
 
 class HomePage extends StatelessWidget {
-  final _longText =
-      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse feugiat.. Etiam ultricies nisi vel augue. Sed a libero. Sed libero. Morbi vestibulum volutpat enim. Praesent ut ligula non mi varius sagittis. Vestibulum rutrum, mi nec elementum vehicula, eros quam gravida nisl, id fringilla neque ante vel mi. Sed lectus.";
-  final _shortText = "Pellentesque habitant morbi tristique senectus et netus";
-  
+  String _longTxt =
+      "Sed libero. Phasellus gravida semper nisi. Vestibulum eu odio. Nunc nonummy metus. Curabitur a felis in nunc fringilla tristique.Sed mollis, eros et ultrices tempus, mauris ipsum aliquam libero, non adipiscing dolor urna a orci. Sed libero. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Cras non dolor.";
+  List people = [
+    {"name": "Maryam", "email": "eleifend.vitae@Vivamusmolestiedapibus.edu"},
+    {"name": "Carlos", "email": "purus.accumsan@Donecfringilla.edu"},
+    {"name": "Ali", "email": "eu.nibh.vulputate@non.ca"},
+    {"name": "Alexandra", "email": "placerat@Aenean.com"},
+    {"name": "Illana", "email": "egestas@montesnasceturridiculus.co.uk"},
+    {"name": "Cora", "email": "auctor.Mauris.vel@erat.com"},
+    {"name": "Astra", "email": "gravida@Morbivehicula.org"},
+    {"name": "Oliver", "email": "Cras.vehicula@iaculisquis.edu"},
+    {"name": "Howard", "email": "faucibus@nuncid.ca"},
+    {"name": "Carlos", "email": "nibh.Quisque.nonummy@tristiquepharetra.co.uk"},
+    {"name": "Wendy", "email": "Etiam@leoelementum.co.uk"},
+    {"name": "Desirae", "email": "posuere.enim.nisl@infaucibusorci.com"},
+    {"name": "Cora", "email": "auctor.Mauris.vel@erat.com"},
+    {"name": "Astra", "email": "gravida@Morbivehicula.org"},
+    {"name": "Oliver", "email": "Cras.vehicula@iaculisquis.edu"},
+    {"name": "Howard", "email": "faucibus@nuncid.ca"},
+    {"name": "Carlos", "email": "nibh.Quisque.nonummy@tristiquepharetra.co.uk"},
+    {"name": "Wendy", "email": "Etiam@leoelementum.co.uk"},
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Home')
-        ),
-
-        body: Column(
-          children: <Widget>[
-            Stack( 
+        appBar: AppBar(title: Text('Home')),
+        body: ListView.builder( 
+          itemCount: people.length,
+          itemBuilder: (BuildContext context, int index){
+            return Column( 
               children: <Widget>[
-                Image.asset("assets/images/image1.png"),
-                Positioned(
-                  bottom: 40,
-                  left: 30,
-                  child: Text("Hello Flutter",style: TextStyle(color: Colors.black,fontSize: 20),),
+                ListTile(
+                  leading: CircleAvatar(
+                    child: Text(people[index]["name"][0]),
+                  ),
+                  title: Text(people[index]["name"]),
+                  subtitle: Text(people[index]["email"]),
                 )
               ],
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Text("Features",style: TextStyle(color: Colors.black,fontSize: 20)),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              children: <Widget>[
-                _rowCell("#3498db"),
-                _rowCell("#e74c3c"),
-                _rowCell("#2ecc71"),
-                _rowCell("#34495e")
-              ]
-            )
-          ],
+            );
+          },
         )
     );
   }
 
-
-  Widget _rowCell(String clr){
-    return Expanded(
-      child: Container(
-          height: 50,width: 50,decoration: BoxDecoration(color: Color(Helper.getHexToInt(clr))),
-          child: Icon(Icons.link,color: Colors.white),
-        )
-    );
+  Widget _cell() {
+    return Row(children: <Widget>[
+      Container(
+        width: 100,
+        height: 100,
+        decoration: BoxDecoration(color: Colors.teal),
+        child: Icon(Icons.lightbulb_outline, color: Colors.white),
+      ),
+      SizedBox(
+        width: 10,
+      )
+    ]);
   }
 }
