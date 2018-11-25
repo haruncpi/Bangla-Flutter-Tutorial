@@ -35,30 +35,73 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Home')),
-        body: ListView.builder( 
-          itemCount: people.length,
-          itemBuilder: (BuildContext context, int index){
-            return Column( 
-              children: <Widget>[
-                ListTile(
-                  leading: CircleAvatar(
-                    child: Text(people[index]["name"][0]),
+        drawer: Drawer(
+          child: ListView(
+            children: <Widget>[
+              Stack( 
+                children: <Widget>[
+                  Image.asset("assets/images/image3.png"),
+                  Positioned( 
+                    left: 30,
+                    bottom: 50,
+                    child: Container(height: 50,width: 50,child: Image.asset("assets/images/avatar.png"),),
                   ),
-                  title: Text(people[index]["name"]),
-                  subtitle: Text(people[index]["email"]),
-                )
-              ],
-            );
-          },
+                  Positioned(
+                    left: 30,
+                    bottom: 20,
+                    child: Text("Hi, Jhon Smith",style: TextStyle(color: Colors.white),),
+                  )
+                ],
+              ),
+              SizedBox(height: 30,),
+              ListTile( 
+                leading: Icon(Icons.mail),
+                title: Text("Mailbox"),
+              ),
+              Divider(),
+                ListTile( 
+                leading: Icon(Icons.mic),
+                title: Text("Records"),
+              ),
+              Divider(),
+                ListTile( 
+                leading: Icon(Icons.add_circle),
+                title: Text("New Records"),
+              ),
+              Divider(),
+                ListTile( 
+                leading: Icon(Icons.build),
+                title: Text("Settings"),
+              ),
+              
+
+            ],
+          ),
+        ),
+        body: Center(
+          child: Text("Awesome"),
         )
-    );
-  }
+      );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
   Widget _cell() {
     return Row(children: <Widget>[
       Container(
         width: 100,
         height: 100,
+
         decoration: BoxDecoration(color: Colors.teal),
         child: Icon(Icons.lightbulb_outline, color: Colors.white),
       ),
